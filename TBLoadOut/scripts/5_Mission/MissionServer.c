@@ -4,8 +4,8 @@ modded class MissionServer {
     private ref TBLOConfigListener tblo_configListener;
     private ref TBLOLoadOutListener tblo_listener;
 
-	override void OnInit() {
-	    super.OnInit();
+    override void OnInit() {
+        super.OnInit();
         tblo_builder = new TBLOLoadOutLocationBuilder;
         tblo_configListener = new TBLOConfigListener;
         tblo_listener = new TBLOLoadOutListener;

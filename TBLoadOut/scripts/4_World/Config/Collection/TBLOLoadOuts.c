@@ -1,19 +1,18 @@
-class TBLOLoadOuts
-{
-	string version = "1";
+class TBLOLoadOuts {
+    string version = "1";
     ref array<ref TBLOLoadOutCategory> loadOutCategories;
     ref array<ref TBLOLoadOutPosition> loadOutPosition;
     int coolDownUsageInSeconds = 100;
 
     void TBLOLoadOuts() {
-        if (!Load()) {
+        if(!Load()) {
             loadOutPosition = new array<ref TBLOLoadOutPosition>;
             loadOutCategories = new array<ref TBLOLoadOutCategory>;
 
             array<ref TBLOLoadOutType> loadOutSubAttachments = new array<ref TBLOLoadOutType>;
             array<ref TBLOLoadOutType> loadOutTypes = new array<ref TBLOLoadOutType>;
-			array<ref TBLOLoadOutType> loadOutAttachments;
-            
+            array<ref TBLOLoadOutType> loadOutAttachments;
+
             loadOutPosition.Insert(new TBLOLoadOutPosition("6572.2001953125 6.0 2466.699951171875", "0 0 0"));
             loadOutTypes.Insert(new TBLOLoadOutType("PoliceCap"));
             loadOutAttachments = new array<ref TBLOLoadOutType>;
@@ -74,7 +73,7 @@ class TBLOLoadOuts
             Save();
         }
 
-        if (version == "1") {
+        if(version == "1") {
             foreach(TBLOLoadOutCategory cat: loadOutCategories) {
                 foreach(TBLOLoadOutPosition pos: loadOutPosition) {
                     pos.AddCategory(cat.name);
@@ -86,7 +85,7 @@ class TBLOLoadOuts
             Save();
         }
 
-        if (version == "2") {
+        if(version == "2") {
             version = "3";
             coolDownUsageInSeconds = 100;
 
@@ -97,16 +96,16 @@ class TBLOLoadOuts
         }
     }
 
-    private bool Load(){
-        if (GetGame().IsServer() && FileExist(TB_SERVER_FOLDER_CONFIG + "LoadOut.json")) {
+    private bool Load() {
+        if(GetGame().IsServer() && FileExist(TB_SERVER_FOLDER_CONFIG + "LoadOut.json")) {
             JsonFileLoader<TBLOLoadOuts>.JsonLoadFile(TB_SERVER_FOLDER_CONFIG + "LoadOut.json", this);
             return true;
         }
         return false;
     }
 
-    private void Save(){
-        if (GetGame().IsServer()) {
+    private void Save() {
+        if(GetGame().IsServer()) {
             CheckTBLOConfigPath();
             JsonFileLoader<TBLOLoadOuts>.JsonSaveFile(TB_SERVER_FOLDER_CONFIG + "LoadOut.json", this);
         }

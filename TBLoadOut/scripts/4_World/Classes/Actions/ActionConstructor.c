@@ -1,9 +1,7 @@
-modded class ActionConstructor
-{
-	override void RegisterActions(TTypenameArray actions)
-    {
+modded class ActionConstructor {
+    override void RegisterActions(TTypenameArray actions) {
         super.RegisterActions(actions);
-		
-		actions.Insert(TBLOActionOpenLoadOutMenu);
+
+        actions.Insert(TBLOActionOpenLoadOutMenu);
     }
 }

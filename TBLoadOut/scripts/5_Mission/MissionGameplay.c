@@ -1,18 +1,17 @@
-modded class MissionGameplay
-{
-   	PlayerBase dzlPlayerBase;
+modded class MissionGameplay {
+    PlayerBase dzlPlayerBase;
 
-	override void OnInit() {
-		super.OnInit();
-		TBLOPlayerClientDB.Get();
-	}
+    override void OnInit() {
+        super.OnInit();
+        TBLOPlayerClientDB.Get();
+    }
 
     override void OnKeyRelease(int key) {
         dzlPlayerBase = TBLOPlayerBaseHelper.GetPlayer();
 
-        if (!dzlPlayerBase) return;
+        if(!dzlPlayerBase) return;
         bool wasActionDone = false;
-        switch (key){
+        switch(key) {
             case KeyCode.KC_ESCAPE:
                 wasActionDone = dzlPlayerBase.TBLOCloseMenu();
                 break;
@@ -20,9 +19,9 @@ modded class MissionGameplay
                 break;
         }
 
-        if (false == wasActionDone){
+        if(false == wasActionDone) {
             super.OnKeyRelease(key);
         }
     }
 
- }
+}

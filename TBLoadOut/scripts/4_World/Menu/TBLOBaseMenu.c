@@ -1,5 +1,4 @@
-class TBLOBaseMenu: UIScriptedMenu
-{
+class TBLOBaseMenu: UIScriptedMenu {
     protected ref TBLOUIItemCreator creator;
     protected ref TBLOConfig config;
     protected string layoutPath;
@@ -11,7 +10,7 @@ class TBLOBaseMenu: UIScriptedMenu
 
 
     protected void Construct() {
-        if(GetGame().IsClient()){
+        if(GetGame().IsClient()) {
             GetDayZGame().Event_OnRPC.Insert(HandleEventsTBLO);
         }
     }
@@ -29,7 +28,7 @@ class TBLOBaseMenu: UIScriptedMenu
         SetPlayer(_player);
     }
 
-    void SetConfig(ref TBLOConfig _config) {
+    void SetConfig(TBLOConfig _config) {
         this.config = _config;
     }
 
@@ -40,7 +39,7 @@ class TBLOBaseMenu: UIScriptedMenu
     override Widget Init() {
         creator = new TBLOUIItemCreator(layoutPath);
 
-        if (hasCloseButton) {
+        if(hasCloseButton) {
             closeButton = creator.GetButtonWidget("Button_Closed");
             closeButton.Show(true);
         }
@@ -53,9 +52,9 @@ class TBLOBaseMenu: UIScriptedMenu
     }
 
     override bool OnClick(Widget w, int x, int y, int button) {
-        if (super.OnClick(w, x, y, button)) return true;
+        if(super.OnClick(w, x, y, button)) return true;
 
-        switch(w){
+        switch(w) {
             case closeButton:
                 OnHide();
                 return true;
@@ -69,7 +68,7 @@ class TBLOBaseMenu: UIScriptedMenu
         super.OnShow();
 
         GetGame().GetUIManager().ShowCursor(true);
-		
+
         GetGame().GetInput().ChangeGameFocus(1);
         GetGame().GetMission().PlayerControlDisable(INPUT_EXCLUDE_INVENTORY);
     }

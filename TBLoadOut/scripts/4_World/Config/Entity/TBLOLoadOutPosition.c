@@ -1,9 +1,8 @@
-class TBLOLoadOutPosition
-{
-	vector position;
-	vector orientation
-	ref array<string> categories;
-	
+class TBLOLoadOutPosition {
+    vector position;
+    vector orientation
+    ref array<string> categories;
+
     void TBLOLoadOutPosition(vector _position, vector _orientation) {
         Init(_position, _orientation);
         categories = new array<string>;
@@ -15,7 +14,7 @@ class TBLOLoadOutPosition
     }
 
     void AddCategory(string cat) {
-        if (!categories) {
+        if(!categories) {
             categories = new array<string>;
         }
 

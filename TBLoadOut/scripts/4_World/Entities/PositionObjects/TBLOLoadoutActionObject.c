@@ -1,7 +1,6 @@
-class TBLOLoadoutActionObject extends BuildingSuper
-{
+class TBLOLoadoutActionObject extends BuildingSuper {
 
-	override void SetActions() {
+    override void SetActions() {
         super.SetActions();
 
         AddAction(TBLOActionOpenLoadOutMenu);

@@ -1,8 +1,7 @@
-class TBLODisplayHelper
-{
+class TBLODisplayHelper {
     static EntityAI previewItem;
 
-    static string GetItemDisplayName(string itemClassname){
+    static string GetItemDisplayName(string itemClassname) {
         TStringArray configs = new TStringArray;
         configs.Insert(CFG_VEHICLESPATH);
         configs.Insert(CFG_WEAPONSPATH);
@@ -11,18 +10,18 @@ class TBLODisplayHelper
         configs.Insert("CfgAmmo");
 
         string displayName;
-        foreach (string itemName: configs){
+        foreach(string itemName: configs) {
             string cfg = itemName + " " + itemClassname + " displayName";
             GetGame().ConfigGetText(cfg, displayName);
 
-            if (displayName != ""){
+            if(displayName != "") {
                 displayName.Replace("$UNT$", "");
 
                 break;
             }
         }
 
-        if (displayName == "") {
+        if(displayName == "") {
             displayName = itemClassname;
         }
 

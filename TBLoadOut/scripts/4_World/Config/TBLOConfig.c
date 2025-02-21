@@ -1,11 +1,10 @@
-class TBLOConfig
-{
+class TBLOConfig {
     private static ref TBLOConfig config;
 
     ref TBLOLoadOuts loadOuts;
 
     static TBLOConfig Get() {
-        if (!config) {
+        if(!config) {
             config = new TBLOConfig;
         }
 
@@ -13,7 +12,7 @@ class TBLOConfig
     }
 
     void TBLOConfig() {
-        if (GetGame().IsServer()) {
+        if(GetGame().IsServer()) {
             loadOuts = new TBLOLoadOuts;
         }
     }

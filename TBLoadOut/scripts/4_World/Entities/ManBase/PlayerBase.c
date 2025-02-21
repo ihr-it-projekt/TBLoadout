@@ -1,5 +1,4 @@
-modded class PlayerBase
-{
+modded class PlayerBase {
     private ref TBLOLoadOutMenu loadOutMenu;
 
 
@@ -7,34 +6,34 @@ modded class PlayerBase
         menu.SetPlayer(this);
     }
 
-	TBLOLoadOutMenu GetLoadOutMenu() {
-		loadOutMenu = new TBLOLoadOutMenu();
-		InitMenu(loadOutMenu);
-		return loadOutMenu;
-	}
+    TBLOLoadOutMenu GetLoadOutMenu() {
+        loadOutMenu = new TBLOLoadOutMenu();
+        InitMenu(loadOutMenu);
+        return loadOutMenu;
+    }
 
-	bool TBLOCloseMenu() {
-	    bool hasDoAction = false;
+    bool TBLOCloseMenu() {
+        bool hasDoAction = false;
 
-		if (loadOutMenu && loadOutMenu.IsVisible()) {
-			loadOutMenu.OnHide();
-			hasDoAction = true;
-		}
-		
-		return hasDoAction;
-	}
+        if(loadOutMenu && loadOutMenu.IsVisible()) {
+            loadOutMenu.OnHide();
+            hasDoAction = true;
+        }
 
-	override void RemoveAllItems() {
-		array<EntityAI> itemsArray = new array<EntityAI>;
-		ItemBase item;
-		GetInventory().EnumerateInventory(InventoryTraversalType.PREORDER, itemsArray);
-		
-		for (int i = 0; i < itemsArray.Count(); i++) {
-			Class.CastTo(item, itemsArray.Get(i));
-			if (item && !item.IsInherited(SurvivorBase)) {
-				GetGame().ObjectDelete(item);
-			}	
-		}
-	}
+        return hasDoAction;
+    }
+
+    override void RemoveAllItems() {
+        array<EntityAI> itemsArray = new array<EntityAI>;
+        ItemBase item;
+        GetInventory().EnumerateInventory(InventoryTraversalType.PREORDER, itemsArray);
+
+        for(int i = 0; i < itemsArray.Count(); i++) {
+            Class.CastTo(item, itemsArray.Get(i));
+            if(item && !item.IsInherited(SurvivorBase)) {
+                GetGame().ObjectDelete(item);
+            }
+        }
+    }
 
 }
